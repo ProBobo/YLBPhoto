@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'YLBPhoto_Example' do
+  pod 'YLBPhoto', :path => '../'
+
+  target 'YLBPhoto_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
