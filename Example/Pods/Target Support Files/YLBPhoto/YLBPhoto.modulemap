@@ -1,0 +1,6 @@
+framework module YLBPhoto {
+  umbrella header "YLBPhoto-umbrella.h"
+
+  export *
+  module * { export * }
+}

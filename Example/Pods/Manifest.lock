@@ -1,0 +1,26 @@
+PODS:
+  - YLBCommon (1.0.0)
+  - YLBPhoto (0.1.0)
+
+DEPENDENCIES:
+  - YLBCommon (from `https://github.com/ProBobo/YLBCommon.git`)
+  - YLBPhoto (from `../`)
+
+EXTERNAL SOURCES:
+  YLBCommon:
+    :git: https://github.com/ProBobo/YLBCommon.git
+  YLBPhoto:
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  YLBCommon:
+    :commit: 736ef6ecd70fdbe5aa40d2b229003883b61a4ca8
+    :git: https://github.com/ProBobo/YLBCommon.git
+
+SPEC CHECKSUMS:
+  YLBCommon: 1da4ba715aa64444554959517eb041f3d5c5cb80
+  YLBPhoto: 690ae23e9886194d8fcb63f9efc0d289f4f9345c
+
+PODFILE CHECKSUM: 46caa46029beccf7a9ad727a9c559d59c64178e3
+
+COCOAPODS: 1.9.1

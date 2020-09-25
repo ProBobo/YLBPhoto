@@ -1,0 +1,6 @@
+framework module Pods_YLBPhoto_Example {
+  umbrella header "Pods-YLBPhoto_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

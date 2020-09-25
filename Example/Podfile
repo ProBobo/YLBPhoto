@@ -1,10 +1,16 @@
-use_frameworks!
+
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+
+#use_frameworks!
 
 platform :ios, '8.0'
 
 target 'YLBPhoto_Example' do
   pod 'YLBPhoto', :path => '../'
 
+  # 基础库
+  pod 'YLBCommon', :git =>'https://github.com/ProBobo/YLBCommon.git'
+  
   target 'YLBPhoto_Tests' do
     inherit! :search_paths
 
