@@ -1,0 +1,1 @@
+../../../../../YLBPhoto/Classes/YLBPhotoManager.h

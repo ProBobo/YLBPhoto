@@ -10,6 +10,7 @@ target 'YLBPhoto_Example' do
 
   # 基础库
   pod 'YLBCommon', :git =>'https://github.com/ProBobo/YLBCommon.git'
+  pod 'YLBProUI', :git => 'https://github.com/YuliboTeam/YLBProUI.git'
   
   target 'YLBPhoto_Tests' do
     inherit! :search_paths

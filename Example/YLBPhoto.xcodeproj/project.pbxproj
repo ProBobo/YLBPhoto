@@ -24,6 +24,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		969890BCCCA179251FD711E6 /* libPods-YLBPhoto_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A232702E3C36B63720988D65 /* libPods-YLBPhoto_Example.a */; };
+		BE96A28E2520630700807678 /* YULIBONavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE96A28D2520630700807678 /* YULIBONavigationBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A232702E3C36B63720988D65 /* libPods-YLBPhoto_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YLBPhoto_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4F34C59F53B91D143E714B8 /* libPods-YLBPhoto_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YLBPhoto_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE96A28C2520630700807678 /* YULIBONavigationBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YULIBONavigationBarView.h; sourceTree = "<group>"; };
+		BE96A28D2520630700807678 /* YULIBONavigationBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YULIBONavigationBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 				6003F5A5195388D20070C39A /* YULIBOViewController.h */,
 				6003F5A6195388D20070C39A /* YULIBOViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
+				BE96A28C2520630700807678 /* YULIBONavigationBarView.h */,
+				BE96A28D2520630700807678 /* YULIBONavigationBarView.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -348,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE96A28E2520630700807678 /* YULIBONavigationBarView.m in Sources */,
 				6003F59E195388D20070C39A /* YULIBOAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* YULIBOViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
