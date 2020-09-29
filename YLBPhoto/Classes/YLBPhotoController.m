@@ -11,6 +11,7 @@
 #import "YLBPhotoTools.h"
 #import <YLBCommon/YLBCommon.h>
 #import "YLBPhotoViewCell.h"
+#import "YLBPhotoPreviewViewController.h"
 
 @interface YLBPhotoController ()<
 UICollectionViewDataSource,
@@ -205,6 +206,13 @@ static NSString * const kYLBPhotoViewCell = @"kYLBPhotoViewCell";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.allArray.count;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    YLBPhotoPreviewViewController *vc = [[YLBPhotoPreviewViewController alloc] init];
+    vc.modelArray = self.allArray;
+    vc.currentModelIndex = indexPath.row;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

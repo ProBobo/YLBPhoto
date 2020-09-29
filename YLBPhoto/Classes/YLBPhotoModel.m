@@ -9,6 +9,7 @@
 
 @implementation YLBPhotoModel
 
+#pragma mark - 图片
 - (PHImageRequestOptions *)imageRequestOptionsWithDeliveryMode:(PHImageRequestOptionsDeliveryMode)deliveryMode {
     PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
     option.deliveryMode = deliveryMode;
@@ -70,4 +71,60 @@
     }];
 }
 
+#pragma mark - 视频
+- (PHImageRequestID)requestAVAssetStartRequestICloud:(YLBModelStartRequestICloud)startRequestICloud
+                                     progressHandler:(YLBModelProgressHandler)progressHandler
+                                             success:(YLBModelAVAssetSuccessBlock)success
+                                              failed:(YLBModelFailedBlock)failed {
+    return [self requestAVAssetStartRequestICloud:startRequestICloud deliveryMode:PHVideoRequestOptionsDeliveryModeFastFormat progressHandler:progressHandler success:success failed:failed];
+}
+- (PHImageRequestID)requestAVAssetStartRequestICloud:(YLBModelStartRequestICloud)startRequestICloud
+                                        deliveryMode:(PHVideoRequestOptionsDeliveryMode)deliveryMode
+                                     progressHandler:(YLBModelProgressHandler)progressHandler
+                                             success:(YLBModelAVAssetSuccessBlock)success
+                                              failed:(YLBModelFailedBlock)failed
+ {
+    
+    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+    options.deliveryMode = deliveryMode;
+    options.networkAccessAllowed = NO;
+    PHImageRequestID requestId = 0;
+    __weak __typeof(self)weakSelf = self;
+    requestId = [[PHImageManager defaultManager] requestAVAssetForVideo:self.asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        [weakSelf requestDataWithResult:asset info:info size:CGSizeZero resultClass:[AVAsset class] orientation:0 audioMix:audioMix startRequestICloud:startRequestICloud progressHandler:progressHandler success:^(id result, NSDictionary *info, UIImageOrientation orientation, AVAudioMix *audioMix) {
+            if (success) {
+                success(result, audioMix, weakSelf, info);
+            }
+        } failed:failed];
+    }];
+    return requestId;
+}
+- (void)requestDataWithResult:(id)results
+                         info:(NSDictionary *)info
+                         size:(CGSize)size
+                  resultClass:(Class)resultClass
+                  orientation:(UIImageOrientation)orientation
+                     audioMix:(AVAudioMix *)audioMix
+           startRequestICloud:(YLBModelStartRequestICloud)startRequestICloud
+              progressHandler:(YLBModelProgressHandler)progressHandler
+                      success:(void (^)(id result, NSDictionary *info, UIImageOrientation orientation, AVAudioMix *audioMix))success
+                       failed:(YLBModelFailedBlock)failed {
+    __weak __typeof(self)weakSelf = self;
+    BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
+    if (downloadFinined && results) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (success) {
+                success(results, info, orientation, audioMix);
+            }
+        });
+        return;
+    }
+    else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (failed) {
+                failed(info, weakSelf);
+            }
+        });
+    }
+}
 @end

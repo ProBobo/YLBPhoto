@@ -122,6 +122,9 @@
 - (YLBPhotoModel *)photoModelWithAsset:(PHAsset *)asset {
     YLBPhotoModel *photoModel = [[YLBPhotoModel alloc] init];
     photoModel.asset = asset;
+    if (asset.mediaType == PHAssetMediaTypeVideo) {
+        photoModel.type = YLBPhotoModelMediaTypeVideo;
+    }
     return photoModel;
 }
 

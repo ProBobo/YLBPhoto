@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class YLBPhotoModel;
+
 typedef NS_ENUM(NSUInteger, YLBPhotoModelMediaType) {
     YLBPhotoModelMediaTypePhoto          = 0,    //!< 照片
     YLBPhotoModelMediaTypeLivePhoto      = 1,    //!< LivePhoto
@@ -21,8 +23,14 @@ typedef NS_ENUM(NSUInteger, YLBPhotoModelMediaType) {
     YLBPhotoModelMediaTypeCamera         = 7     //!< 跳转相机
 };
 
-@interface YLBPhotoModel : NSObject
 typedef void (^ YLBModelImageSuccessBlock)(UIImage * _Nullable image, YLBPhotoModel * _Nullable model, NSDictionary * _Nullable info);
+typedef void (^ YLBModelStartRequestICloud)(PHImageRequestID iCloudRequestId, YLBPhotoModel * _Nullable model);
+typedef void (^ YLBModelProgressHandler)(double progress, YLBPhotoModel * _Nullable model);
+typedef void (^ YLBModelAVAssetSuccessBlock)(AVAsset * _Nullable avAsset, AVAudioMix * _Nullable audioMix, YLBPhotoModel * _Nullable model, NSDictionary * _Nullable info);
+typedef void (^ YLBModelFailedBlock)(NSDictionary * _Nullable info, YLBPhotoModel * _Nullable model);
+
+@interface YLBPhotoModel : NSObject
+
 /**  照片列表请求的资源的大小 */
 @property (assign, nonatomic) CGSize requestSize;
 /**  照片类型  */
@@ -38,7 +46,11 @@ typedef void (^ YLBModelImageSuccessBlock)(UIImage * _Nullable image, YLBPhotoMo
         可用于取消请求 [[PHImageManager defaultManager] cancelImageRequest:(PHImageRequestID)];
 */
 - (PHImageRequestID)requestThumbImageCompletion:(YLBModelImageSuccessBlock)completion;
-
+#pragma mark - 视频
+- (PHImageRequestID)requestAVAssetStartRequestICloud:(YLBModelStartRequestICloud)startRequestICloud
+                                     progressHandler:(YLBModelProgressHandler)progressHandler
+                                             success:(YLBModelAVAssetSuccessBlock)success
+                                              failed:(YLBModelFailedBlock)failed;
 @end
 
 NS_ASSUME_NONNULL_END
