@@ -47,11 +47,12 @@
         if (weakSelf.model == model) {
 //            weakSelf.maskView.hidden = NO;
             weakSelf.imageView.image = image;
-//            weakSelf.requestID = [weakSelf.model requestThumbImageCompletion:^(UIImage *image, HXPhotoModel *model, NSDictionary *info) {
-//                if (weakSelf.model == model) {
-//                    weakSelf.imageView.image = image;
-//                }
-//            }];
+//            weakSelf.requestID =
+            [weakSelf.model requestThumbImageCompletion:^(UIImage *image, YLBPhotoModel *model, NSDictionary *info) {
+                if (weakSelf.model == model) {
+                    weakSelf.imageView.image = image;
+                }
+            }];
         }
     }];
 }
