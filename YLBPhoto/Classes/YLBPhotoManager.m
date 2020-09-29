@@ -52,8 +52,8 @@
 
 - (void)getCameraRollAlbumCompletion:(void (^)(YLBAlbumModel *albumModel))completion {
     PHFetchOptions *option = [[PHFetchOptions alloc] init];
-    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
+    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+//    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeImage];
 //    option.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld", PHAssetMediaTypeVideo];
     
     BOOL addTempAlbum = YES;
