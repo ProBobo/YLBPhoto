@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface YLBPhotoPreviewViewController : UIViewController
 @property (strong, nonatomic) NSMutableArray *modelArray;
 @property (assign, nonatomic) NSInteger currentModelIndex;
+@property(nonatomic, strong) UIImage *currentImage;
 @end
 
 NS_ASSUME_NONNULL_END

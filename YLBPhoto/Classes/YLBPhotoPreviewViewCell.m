@@ -76,18 +76,18 @@
     }
     else {
         __weak __typeof(self)weakSelf = self;
-            [self.model highQualityRequestThumbImageWithSize:CGSizeMake(15, 15) completion:^(UIImage * _Nullable image, YLBPhotoModel * _Nullable model, NSDictionary * _Nullable info) {
-                if (weakSelf.model == model) {
-        //            weakSelf.maskView.hidden = NO;
-                    weakSelf.imageView.image = image;
-        //            weakSelf.requestID =
-                    [weakSelf.model requestThumbImageCompletion:^(UIImage *image, YLBPhotoModel *model, NSDictionary *info) {
-                        if (weakSelf.model == model) {
-                            weakSelf.imageView.image = image;
-                        }
-                    }];
-                }
-            }];
+        [self.model highQualityRequestThumbImageWithSize:CGSizeMake(15, 15) completion:^(UIImage * _Nullable image, YLBPhotoModel * _Nullable model, NSDictionary * _Nullable info) {
+            if (weakSelf.model == model) {
+                //            weakSelf.maskView.hidden = NO;
+                weakSelf.imageView.image = image;
+                //            weakSelf.requestID =
+                [weakSelf.model requestThumbImageCompletion:^(UIImage *image, YLBPhotoModel *model, NSDictionary *info) {
+                    if (weakSelf.model == model) {
+                        weakSelf.imageView.image = image;
+                    }
+                }];
+            }
+        }];
     }
     
 }
